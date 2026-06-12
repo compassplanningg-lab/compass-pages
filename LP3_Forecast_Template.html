@@ -139,6 +139,18 @@ footer{background:var(--dark);padding:26px 5%;display:flex;align-items:center;ju
 
 :root{--accent:#A07828;--accent-a:#C9A84C22}
 .hero-eyebrow::before{background:#C9A84C}
+
+.hs-form-frame{width:100%}
+.hs-form-frame form{width:100%!important}
+.hs-form-frame .hs-input{width:100%!important;padding:11px 13px;border:1.5px solid var(--border);border-radius:7px;font-size:14px;font-family:'Inter',sans-serif;color:var(--dark);background:var(--white);outline:none;box-sizing:border-box;transition:border-color .15s;-webkit-appearance:none}
+.hs-form-frame .hs-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-a)}
+.hs-form-frame label{font-size:11px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;display:block}
+.hs-form-frame .hs-form-field{margin-bottom:12px}
+.hs-form-frame .hs-error-msgs{color:#C62828;font-size:12px;list-style:none;margin-top:4px}
+.hs-form-frame .hs-button{width:100%;padding:13px;border-radius:8px;font-size:14px;font-weight:700;border:none;background:var(--accent);color:var(--btn-color,#fff);margin-top:4px;cursor:pointer;transition:opacity .15s;letter-spacing:-.01em;font-family:'Inter',sans-serif}
+.hs-form-frame .hs-button:hover{opacity:.88}
+.hs-form-frame .submitted-message{font-size:14px;color:#1A6B72;font-weight:500;padding:10px 0;text-align:center}
+.hs-form-frame fieldset{max-width:100%!important;border:none;padding:0;margin:0}
 </style>
   <!-- Start of HubSpot Embed Code -->
   <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/246447834.js"></script>
@@ -176,18 +188,20 @@ footer{background:var(--dark);padding:26px 5%;display:flex;align-items:center;ju
       <div class="form-sub">Register once, download instantly. A copy also goes to your inbox.</div>
 
       <div class="hs-wrap" id="hs-wrap">
-        <div class="hs-loading" id="hs-loading">
-          <div class="hs-spinner"></div>
-          <span>Loading form…</span>
-        </div>
-        <!--
-          PASTE YOUR HUBSPOT EMBED CODE HERE.
-          Add onFormSubmitted: function(){ handleHSSubmit(); }
-          inside hbspt.forms.create({ ... })
-        -->
+      <!-- HubSpot Form Embed -->
+      <script src="https://js-na2.hsforms.net/forms/embed/246447834.js" defer></script>
+      <div class="hs-form-frame" data-region="na2" data-form-id="53b1b7df-7637-4dbd-a4d5-78cb7dc16e0a" data-portal-id="246447834"></div>
       </div>
 
-      <div id="fallback-form" class="fallback-form">
+      <script>
+      window.addEventListener('message', function(e) {
+        if (e.data && e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') {
+          showSuccess();
+        }
+      });
+      </script>
+
+      <div id="fallback-form" class="fallback-form" style="display:none">
         <div class="form-2col">
           <div class="form-row">
             <label for="f-fname">First name *</label>
